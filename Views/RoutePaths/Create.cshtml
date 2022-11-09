@@ -1,0 +1,51 @@
+﻿@model TmsApp.Models.RoutePath
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add new Route</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" onsubmit="onSucess()">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RouteNumber" class="control-label"></label>
+                <input asp-for="RouteNumber" type="text" class="form-control" />
+                <span asp-validation-for="RouteNumber" class="text-danger">@ViewBag.routeerr</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleNumber" class="control-label"></label>
+                <select asp-for="VehicleNumber" class ="form-select" asp-items="ViewBag.VehicleNumber"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pickup" class="control-label"></label>
+                <input asp-for="Pickup" type="text" class="form-control" />
+                <span asp-validation-for="Pickup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleStop" class="control-label"></label>
+                <input asp-for="VehicleStop" type="text" class="form-control" />
+                <span asp-validation-for="VehicleStop" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<p class="text-danger">@ViewBag.rterr</p>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+    <script>
+        function onSucess() {
+            alert("New Route is adding to the system. Once Done, it will redirect to the list!")
+        }
+    </script>

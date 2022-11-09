@@ -1,0 +1,90 @@
+﻿@model IEnumerable<TmsApp.Models.Allocation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@*
+<h1>Index</h1>*@
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+
+<header class="header">
+
+    <section class="hnav">
+        <div class="logo">
+            <h3><i class="fa-solid fa-car"></i>TMS</h3>
+        </div>
+        <a class="btn btn-light" asp-controller="User" asp-action="Login">Logout</a>
+
+    </section>
+
+</header>
+
+
+<div class="side-bar">
+
+    <div class="profile">
+        <img src="/images/admin.png" class="image" alt="">
+        <h3 class="name">Admin</h3>
+    </div>
+
+    <nav class="navb-ar">
+        <ul>
+            <li><a asp-controller="Dashboard" asp-action="Home"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a asp-controller="Dashboard" asp-action="Addnew"><i class="fa-solid fa-plus"></i><span>Add new</span></a></li>
+            <li><a asp-controller="Dashboard" asp-action="Modify"><i class="fa-solid fa-pen-to-square"></i><span>Modify</span></a></li>
+            <li><a asp-controller="Dashboard" asp-action="Status"><i class="fa-solid fa-check"></i><span>Status</span></a></li>
+            <li><a asp-controller="Allocation" asp-action="Index"><i class="fa-sharp fa-solid fa-tablet"></i><span>Allocate</span></a></li>
+        </ul>
+    </nav>
+
+</div>
+
+<section class="tabsec">
+    <h2>Allocations:</h2>
+    @*<p>
+        <a class="btn btn-outline-info" asp-action="Create">New Allocation</a>
+    </p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+               @Html.DisplayNameFor(model => model.VehicleNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteNumber)
+            </th>
+           
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+              TN 01 AB @Html.DisplayFor(modelItem => item.VehicleNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteNumber)
+            </td>
+            
+            <td>
+                @*<a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.AllocationId">Edit</a> |*@
+                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.AllocationId">Details</a> 
+                @*<a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.AllocationId">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</section>

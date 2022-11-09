@@ -1,0 +1,37 @@
+﻿@model TmsApp.Models.Allocation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Allocation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VehicleNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VehicleNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RouteNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RouteNumber)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    @*<a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model?.AllocationId">Edit</a> |*@
+    <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
+</div>
